@@ -39,14 +39,14 @@ export default function MainSection() {
       });
 
   return (
-    <div>
-      <div className="h-screen relative justify-center flex">
+    <div className="">
+      <div className="h-screen relative justify-center flex bg-gradient-to-tr from-orange-50 to-yellow-50">
         <div className="absolute bottom-12  w-5/6 h-5/6 m-7 flex flex-col-reverse overflow-y-auto">
           {messages.map((message, index) => (
             <div key={index} className="flex gap-7 items-center my-3">
               <SmartToyIcon fontSize="large" />
-              <div className="border-indigo-500 border-2 rounded w-full h-full p-4 items-center flex">
-                <span className="text-center w-full">{message}</span>
+              <div className="border-orange-300 border-2 rounded w-full h-full p-4 items-center flex">
+                <span className="text-center w-full text-xl">{message}</span>
               </div>
             </div>
           ))}
