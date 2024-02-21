@@ -5,28 +5,29 @@ import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import SendIcon from '@mui/icons-material/Send';
 
+
+// Tipo da prompt para uso no POST do axios
 type Inputs = {
   prompt: string;
 };
 
-type Data = {
-    content: string
-}
 
 export default function MainSection() {
+
+// Lista de mensagens do "robô"
   const [messages, setMessages] = useState([
     "Hello! Welcome to the ChatGPT mock project.",
   ]);
 
-//   const [userMessages, setUserMessages] = useState([])
 
+// Uso do React Hook Form
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
   } = useForm<Inputs>();
 
+
+// Comando que será executado ao enviar o formulário
   const onSubmit: SubmitHandler<Inputs> = async (data) =>
     await axios
       .post("http://127.0.0.1:3000/prompt", data)
@@ -36,15 +37,6 @@ export default function MainSection() {
       .catch(function (error) {
         console.error(error);
       });
-
-//   useEffect(() => {
-//       const interval = setInterval(() => {
-//         const newMessage = `New message ${messages.length + 1}`;
-//         setMessages(prevMessages => [newMessage, ...prevMessages]);
-//       }, 2000);
-
-//       return () => clearInterval(interval);
-//     }, [messages]);
 
   return (
     <div>
